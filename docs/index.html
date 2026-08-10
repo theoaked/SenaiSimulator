@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="description" content="SENAI Simulator — versão web do life simulator em Java Swing." />
+  <title>SENAI Simulator</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <!-- Barra superior (equivale ao JMenuBar de JanelaGeral) -->
+  <header class="topbar">
+    <span class="topbar-title">SENAI&nbsp;Simulator</span>
+    <nav class="topbar-menu">
+      <button id="btn-novo" class="menu-btn" type="button">Novo Jogo</button>
+      <button id="btn-sair" class="menu-btn" type="button">Sair</button>
+      <button id="btn-mute" class="menu-btn" type="button" title="Ligar/desligar som">🔊</button>
+    </nav>
+  </header>
+
+  <!-- Tela de início -->
+  <section id="tela-inicio" class="tela-inicio">
+    <div class="inicio-card">
+      <h1>SENAI Simulator</h1>
+      <p class="inicio-sub">Sobreviva 7 dias. Boa sorte, meu filho.</p>
+      <div id="inicio-botoes" class="inicio-botoes"></div>
+    </div>
+  </section>
+
+  <!-- Jogo -->
+  <main id="jogo" class="jogo oculto">
+    <!-- Painel de stats (equivale a JanelaJogo, lado esquerdo) -->
+    <section class="painel painel-stats" aria-label="Status do personagem">
+      <div class="stats-topo">
+        <div class="stat-linha stat-nome">
+          <span class="stat-label">Nome</span>
+          <span id="v-nome" class="stat-campo campo-texto"></span>
+        </div>
+        <div class="stat-linha stat-dia">
+          <span class="stat-label">Dia</span>
+          <span id="v-dia" class="stat-campo campo-num"></span>
+        </div>
+        <div class="stat-linha stat-level">
+          <span class="stat-label">Level</span>
+          <span id="v-level" class="stat-campo campo-num"></span>
+        </div>
+        <div class="stat-linha stat-dinheiro">
+          <span class="stat-label">Dinheiro</span>
+          <span class="stat-campo campo-num"><span class="rs">R$</span>&nbsp;<span id="v-dinheiro"></span></span>
+        </div>
+      </div>
+      <div class="stats-barras" id="stats-barras">
+        <!-- barras /20 preenchidas via JS -->
+      </div>
+    </section>
+
+    <!-- Grade de locais (equivale aos 8 botões de JanelaJogo, lado direito) -->
+    <section class="painel painel-locais" aria-label="Locais">
+      <h2 class="painel-titulo">Para onde vamos?</h2>
+      <div id="locais" class="locais-grid"></div>
+    </section>
+
+    <!-- Log de ações (substitui os JOptionPane por-ação) -->
+    <section class="painel painel-log" aria-label="Log de ações">
+      <h2 class="painel-titulo">Log</h2>
+      <ul id="log" class="log-lista"></ul>
+    </section>
+  </main>
+
+  <!-- Overlay do local (equivale a cada JInternalFrame de local) -->
+  <div id="overlay-local" class="overlay oculto" aria-hidden="true">
+    <div class="local-card" role="dialog" aria-modal="true" aria-labelledby="local-titulo">
+      <div class="local-header">
+        <span id="local-titulo" class="local-titulo"></span>
+        <button id="local-fechar" class="local-fechar" type="button" aria-label="Fechar">✕</button>
+      </div>
+      <div id="local-acoes" class="local-acoes"></div>
+    </div>
+  </div>
+
+  <!-- Modal genérico (nome / morte / vitória / confirmação) -->
+  <div id="modal" class="overlay oculto" aria-hidden="true">
+    <div class="modal-card" role="dialog" aria-modal="true">
+      <p id="modal-msg" class="modal-msg"></p>
+      <input id="modal-input" class="modal-input oculto" type="text" autocomplete="off" />
+      <div id="modal-botoes" class="modal-botoes"></div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div id="toast" class="toast oculto" role="status" aria-live="polite"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/game.js"></script>
+  <script src="js/ui.js"></script>
+</body>
+</html>
