@@ -1,5 +1,7 @@
 # SENAI Simulator — versão Web
 
+### ▶️ [Jogar agora](https://theoaked.github.io/SenaiSimulator/)
+
 Porte web (HTML/CSS/JS puro, sem build) do "life simulator" originalmente feito em
 Java Swing. Preserva as mecânicas, valores e textos do original, com visual modernizado,
 log de ações não-bloqueante, salvamento automático, suporte a mobile/touch e efeitos sonoros.
